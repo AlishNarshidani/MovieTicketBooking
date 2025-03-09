@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/hallLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_bg"
+        android:orientation="horizontal">
+
+    <!-- Left Section: Hall Info -->
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Hall Name -->
+        <TextView
+            android:id="@+id/hallName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hall Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <!-- Total Seats -->
+        <TextView
+            android:id="@+id/totalSeats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Seats: 200"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingTop="4dp"/>
+
+        <!-- Screen Type -->
+        <TextView
+            android:id="@+id/screenType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Screen Type: IMAX"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingTop="4dp"/>
+
+        <!-- Sound System -->
+        <TextView
+            android:id="@+id/soundSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sound System: Dolby Atmos"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:paddingTop="4dp"/>
+    </LinearLayout>
+
+    <!-- Right Section: Add Button -->
+    <ImageView
+        android:id="@+id/addHall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleX="2.0"
+        android:scaleY="2.0"
+        android:src="@drawable/ic_greater_than"
+        android:contentDescription="Add Hall"
+        android:padding="8dp"
+        android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+</LinearLayout>

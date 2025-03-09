@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmployeeSideAddMovieToHallActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@id/buttons">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/movieCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Movie Poster -->
+                <ImageView
+                    android:id="@+id/imgMoviePoster"
+                    android:layout_width="190dp"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cinemalogo"
+                    android:contentDescription="Movie Poster"
+                    android:clipToOutline="true"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_marginTop="6dp"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical">
+
+            <!-- Unchangeable Movie Details -->
+            <EditText
+                android:id="@+id/edtMovieTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:background="@drawable/grey_square_edittext"
+                android:textColor="@color/black"
+                android:inputType="none"
+                android:focusable="false"
+                android:textStyle="bold"
+                android:padding="10dp"/>
+
+            <EditText
+                android:id="@+id/edtMovieGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/grey_square_edittext"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:inputType="none"
+                android:focusable="false"
+                android:padding="10dp"/>
+
+            <EditText
+                android:id="@+id/edtMovieReleaseDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:background="@drawable/grey_square_edittext"
+                android:textColor="@color/black"
+                android:layout_marginTop="6dp"
+                android:inputType="none"
+                android:focusable="false"
+                android:padding="10dp"/>
+
+            <!-- Editable Fields -->
+            <!-- Editable Fields -->
+            <EditText
+                android:id="@+id/edtStartTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/transparent_edittext"
+                android:textColor="@color/black"
+                android:hint="Select Start Date &amp; Time"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:padding="10dp"/>
+
+            <EditText
+                android:id="@+id/edtEndTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select End Date &amp; Time"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/transparent_edittext"
+                android:textColor="@color/black"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:padding="10dp"/>
+
+            <!-- Dynamic Row Pricing Fields -->
+            <LinearLayout
+                android:id="@+id/rowsContainer"
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+
+    <!-- Submit Button Container -->
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnViewSchedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="View Hall Schedule"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:minHeight="60dp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add To Hall"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:minHeight="60dp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

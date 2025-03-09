@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmployeeSideMovieDetailsActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_above="@+id/btnAddToTheatre"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/movieCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Movie Poster -->
+                    <ImageView
+                        android:id="@+id/imgMoviePoster"
+                        android:layout_width="190dp"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/cinemalogo"
+                        android:contentDescription="Movie Poster"
+                        android:clipToOutline="true"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Movie Name -->
+            <TextView
+                android:id="@+id/txtMovieTitle"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movie Name"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingTop="12dp" />
+
+            <!-- Ratings -->
+            <LinearLayout
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/baseline_star_rate_24" />
+
+                <TextView
+                    android:id="@+id/txtRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5/10"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:paddingStart="4dp" />
+            </LinearLayout>
+
+            <!-- Movie Runtime -->
+            <TextView
+                android:id="@+id/txtMovieRuntime"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Runtime"
+                android:textSize="16sp"
+                android:textColor="#473B3B"
+                android:paddingBottom="8dp" />
+
+            <!-- Genre & Year -->
+            <TextView
+                android:id="@+id/txtGenre"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre"
+                android:textSize="16sp"
+                android:textColor="#473B3B"
+                android:paddingBottom="8dp" />
+
+            <!-- Release Date -->
+            <TextView
+                android:id="@+id/txtReleaseDate"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Release Date"
+                android:textSize="16sp"
+                android:textColor="#473B3B"
+                android:paddingBottom="8dp" />
+
+            <!-- Movie Description -->
+            <TextView
+                android:id="@+id/txtMovieDescription"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Movie description goes here..."
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:paddingTop="8dp"
+                android:paddingBottom="16dp" />
+
+            <!-- Container for dynamically added YouTube buttons -->
+            <LinearLayout
+                android:id="@+id/youtubeLinksContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <!-- Booking Button -->
+    <Button
+        android:id="@+id/btnAddToTheatre"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:text="Add To Theatre"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center"
+    tools:context=".CustomerDashboard">
+
+    <!-- Toolbar Section -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="16dp">
+
+        <!-- Profile Icon -->
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_alignParentLeft="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_person_pin_24"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circle_shadow"
+            android:scaleType="centerCrop"
+            android:padding="5dp"
+            android:contentDescription="Profile"
+            android:clickable="true"
+            android:focusable="true"/>
+
+            <!-- App Name -->
+            <TextView
+                android:id="@+id/appTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MovieMania"
+                android:textSize="34sp"
+                android:textColor="@color/black"
+                android:layout_alignParentLeft="true"
+                android:textStyle="bold"
+                android:layout_toEndOf="@+id/profileIcon"
+                android:fontFamily="@font/audiowide"
+                android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:text="CUSTOMER"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="275dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Everyday Essentials Store -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/movieBookingCard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:background="@drawable/bg_purple_gradient">
+
+                        <TextView
+                            android:id="@+id/title1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Book Movie Tickets"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subtitle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select Theatre &amp; Movie"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:layout_below="@id/title1"
+                            android:layout_marginTop="4dp" />
+
+                        <ImageView
+                            android:id="@+id/greaterThanSymbol1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="-10dp"
+                            android:layout_below="@id/subtitle1"
+                            android:src="@drawable/ic_greater_than"/>
+
+                        <ImageView
+                            android:id="@+id/icon1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/cinemalogo"/>
+
+                    </RelativeLayout>
+
+                    <!-- Gradient Overlay for Text Visibility -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/gradient_overlay"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/newsCard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:background="@drawable/bg_green_gradient">
+
+                        <TextView
+                            android:id="@+id/title2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Latest Movie News"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subtitle2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Read Movie news &amp; Updates"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:layout_below="@id/title2"
+                            android:layout_marginTop="4dp" />
+
+                        <ImageView
+                            android:id="@+id/greaterThanSymbol2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="-10dp"
+                            android:layout_below="@id/subtitle2"
+                            android:src="@drawable/ic_greater_than"/>
+
+                        <ImageView
+                            android:id="@+id/icon2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/movie_news"
+                            android:contentDescription="Essentials" />
+
+                    </RelativeLayout>
+
+                    <!-- Gradient Overlay for Text Visibility -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/gradient_overlay"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/walletCard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:background="@drawable/bg_blue_gradient">
+
+                        <TextView
+                            android:id="@+id/title3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wallet"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subtitle3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Desposit Money &amp; View Transaction"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:layout_below="@id/title3"
+                            android:layout_marginTop="4dp" />
+
+                        <ImageView
+                            android:id="@+id/greaterThanSymbol3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="-10dp"
+                            android:layout_below="@id/subtitle3"
+                            android:src="@drawable/ic_greater_than"/>
+
+                        <ImageView
+                            android:id="@+id/icon3"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/wallet"
+                            android:contentDescription="Essentials" />
+
+                    </RelativeLayout>
+
+                    <!-- Gradient Overlay for Text Visibility -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/gradient_overlay"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/notificationCard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:background="@drawable/bg_orange_gradient">
+
+                        <TextView
+                            android:id="@+id/title4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Notification &amp; Offers"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subtitle4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Special Discount &amp; Notifications"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:layout_below="@id/title4"
+                            android:layout_marginTop="4dp" />
+
+                        <ImageView
+                            android:id="@+id/greaterThanSymbol4"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="-10dp"
+                            android:layout_below="@id/subtitle4"
+                            android:src="@drawable/ic_greater_than"/>
+
+                        <ImageView
+                            android:id="@+id/icon4"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/notification"
+                            android:contentDescription="Essentials" />
+
+                    </RelativeLayout>
+
+                    <!-- Gradient Overlay for Text Visibility -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/gradient_overlay"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/bookingHistoryCard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:layout_margin="12dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="16dp"
+                        android:background="@drawable/bg_red_gradient">
+
+                        <TextView
+                            android:id="@+id/title5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Booking History"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/subtitle5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View Previous &amp; Upcoming Bookings"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp"
+                            android:layout_below="@id/title5"
+                            android:layout_marginTop="4dp" />
+
+                        <ImageView
+                            android:id="@+id/greaterThanSymbol5"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="-10dp"
+                            android:layout_below="@id/subtitle5"
+                            android:src="@drawable/ic_greater_than"/>
+
+                        <ImageView
+                            android:id="@+id/icon5"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/bookingshistory"
+                            android:contentDescription="Essentials" />
+
+                    </RelativeLayout>
+
+                    <!-- Gradient Overlay for Text Visibility -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/gradient_overlay"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
