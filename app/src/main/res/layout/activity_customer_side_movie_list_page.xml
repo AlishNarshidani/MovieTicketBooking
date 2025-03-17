@@ -9,6 +9,13 @@
     android:gravity="center"
     tools:context=".CustomerSideMovieListPage">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
     <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="match_parent"

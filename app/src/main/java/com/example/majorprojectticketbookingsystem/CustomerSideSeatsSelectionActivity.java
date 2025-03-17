@@ -1,5 +1,6 @@
 package com.example.majorprojectticketbookingsystem;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -76,6 +77,35 @@ public class CustomerSideSeatsSelectionActivity extends AppCompatActivity {
 
             fetchSeatsFromFirestore();
         }
+
+        btnConfirmSelection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Convert HashMap<Button, Integer> to a List of seat IDs
+                ArrayList<String> selectedSeatIds = new ArrayList<>();
+                ArrayList<Integer> selectedSeatPrices = new ArrayList<>();
+
+                for (Map.Entry<Button, Integer> entry : selectedSeats.entrySet()) {
+                    Button seatButton = entry.getKey();
+                    String seatId = seatButton.getText().toString(); // ✅ Seat ID stored as button text
+                    int seatPrice = entry.getValue(); // ✅ Seat Price stored as Integer value
+
+                    selectedSeatIds.add(seatId);
+                    selectedSeatPrices.add(seatPrice);
+                }
+
+                Intent intent = new Intent(CustomerSideSeatsSelectionActivity.this, CustomerSideBookingPreview.class);
+                intent.putExtra("movie",movie);
+                intent.putExtra("hall",hall);
+                intent.putExtra("theatre",theatre);
+                intent.putExtra("show",show);
+                intent.putExtra("totalPrice",String.valueOf(totalPrice));
+                intent.putStringArrayListExtra("selectedSeatIds", selectedSeatIds);
+                intent.putIntegerArrayListExtra("selectedSeatPrices", selectedSeatPrices);
+                startActivity(intent);
+            }
+        });
 
 
 

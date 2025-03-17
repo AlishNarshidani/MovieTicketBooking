@@ -1,5 +1,6 @@
 package com.example.majorprojectticketbookingsystem;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,7 @@ public class CustomerSideChooseTheatreActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private ProgressBar progressBar;
     private String movieId;
+    private String userCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class CustomerSideChooseTheatreActivity extends AppCompatActivity {
             return insets;
         });
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        userCity = sharedPreferences.getString("userCity", "NA");
 
         movie = (Movie) getIntent().getSerializableExtra("movie");
         recyclerView = findViewById(R.id.recyclerView);
@@ -104,9 +108,11 @@ public class CustomerSideChooseTheatreActivity extends AppCompatActivity {
                             String location = documentSnapshot.getString("location");
                             String totalHalls = documentSnapshot.getString("totalHalls");
 
-                            Theatre theatre = new Theatre(theatreId, theatreName, location, totalHalls);
-                            theatreList.add(theatre);
-                            adapter.notifyDataSetChanged();
+                            if(!userCity.equals("NA") && location!=null && location.toLowerCase().contains(userCity.toLowerCase())) {
+                                Theatre theatre = new Theatre(theatreId, theatreName, location, totalHalls);
+                                theatreList.add(theatre);
+                                adapter.notifyDataSetChanged();
+                            }
                         }
                     })
                     .addOnFailureListener(e -> Log.e("Firestore", "Error fetching theatre details", e));
