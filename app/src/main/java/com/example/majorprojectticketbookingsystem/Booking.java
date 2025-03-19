@@ -1,0 +1,67 @@
+package com.example.majorprojectticketbookingsystem;
+
+public class Booking {
+    private String bookingId;
+    private String bookingStatus;
+    private String movieName;
+    private String theatreName;
+    private String theatreLocation;
+    private String hallName;
+    private String showStartTime;
+    private String showEndTime;
+    private String selectedSeats;
+    private String totalPrice;
+
+    public Booking(String bookingId, String bookingStatus, String movieName, String theatreName, String theatreLocation, String hallName, String showStartTime, String showEndTime, String selectedSeats, String totalPrice) {
+        this.bookingId = bookingId;
+        this.bookingStatus = bookingStatus;
+        this.movieName = movieName;
+        this.theatreName = theatreName;
+        this.theatreLocation = theatreLocation;
+        this.hallName = hallName;
+        this.showStartTime = showStartTime;
+        this.showEndTime = showEndTime;
+        this.selectedSeats = selectedSeats;
+        this.totalPrice = totalPrice;
+    }
+
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public String getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public String getSelectedSeats() {
+        return selectedSeats;
+    }
+
+    public String getShowEndTime() {
+        return showEndTime;
+    }
+
+    public String getShowStartTime() {
+        return showStartTime;
+    }
+
+    public String getHallName() {
+        return hallName;
+    }
+
+    public String getTheatreLocation() {
+        return theatreLocation;
+    }
+
+    public String getTheatreName() {
+        return theatreName;
+    }
+}

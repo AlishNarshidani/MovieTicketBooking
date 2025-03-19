@@ -52,6 +52,22 @@ public class CustomerDashboard extends AppCompatActivity {
             }
         });
 
+        walletCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerDashboard.this, CustomerSideWalletActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        bookingHistoryCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerDashboard.this, CustomerSideChooseUpcomingOrPastBookings.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

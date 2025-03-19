@@ -16,6 +16,21 @@
         android:theme="@style/Theme.MajorProjectTicketBookingSystem"
         tools:targetApi="31">
         <activity
+            android:name=".CustomerSideViewBookings"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerSideChooseUpcomingOrPastBookings"
+            android:exported="false" />
+        <activity
+            android:name=".TransactionHistory"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentAmount"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerSideWalletActivity"
+            android:exported="false" />
+        <activity
             android:name=".CustomerSideBookingPreview"
             android:exported="false" />
         <activity

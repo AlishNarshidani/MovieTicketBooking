@@ -388,6 +388,8 @@ public class CustomerSideMovieListPage extends AppCompatActivity {
                                 fetchMovieDetails(filteredMovieIds); // ✅ Fetch movie details
                             } else {
                                 Log.d("Movies", "No movies found in user's city.");
+                                Toast.makeText(this, "No movies found in user's city.", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
                             }
                         }
                     })
