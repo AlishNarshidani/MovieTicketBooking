@@ -60,6 +60,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     intent = new Intent(context, CustomerSideMovieDetailsActivity.class);
                 } else if ("employee".equalsIgnoreCase(caller)) {
                     intent = new Intent(context, EmployeeSideMovieDetailsActivity.class);
+                } else if ("EmployeeViewUpcomingBookingsMovieWise".equalsIgnoreCase(caller) || "EmployeeViewPastBookingsMovieWise".equalsIgnoreCase(caller)){
+                    intent = new Intent(context, EmployeeSideChooseHallForViewBookings.class); // Fallback page\
+                    intent.putExtra("caller", caller);
                 } else {
                     intent = new Intent(context, CustomerSideMovieDetailsActivity.class); // Fallback page
                 }

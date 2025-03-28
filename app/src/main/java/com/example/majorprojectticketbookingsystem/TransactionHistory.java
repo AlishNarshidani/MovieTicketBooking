@@ -78,7 +78,7 @@ public class TransactionHistory extends AppCompatActivity {
                             if(transactionType.equalsIgnoreCase("Deposit"))
                             {
                                 transactionStatusOrMethod = document.getString("transactionStatus");
-                            } else if (transactionType.equalsIgnoreCase("Booking")) {
+                            } else if (transactionType.equalsIgnoreCase("Booking") || transactionType.equalsIgnoreCase("Refund")) {
 
                                 transactionStatusOrMethod = document.getString("transactionMethod");
                                 transactionIdOrBookingId = document.getString("bookingId");

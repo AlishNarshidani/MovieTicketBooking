@@ -50,6 +50,14 @@ public class EmployeeDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        viewAllBookingsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeeDashboard.this, EmployeeSideChooseBookingDetailsOrScanQR.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

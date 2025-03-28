@@ -84,6 +84,7 @@ public class CustomerSideViewBookings extends AppCompatActivity {
                         String theatreName = document.getString("theatreName");
                         String theatreLocation = document.getString("theatreLocation");
                         String hallName = document.getString("hallName");
+                        String showId = document.getString("showId");
                         Timestamp showStartTime = document.getTimestamp("showStartTime");
                         Timestamp showEndTime = document.getTimestamp("showEndTime");
                         List<String> seatList = (List<String>) document.get("selectedSeats");
@@ -94,7 +95,7 @@ public class CustomerSideViewBookings extends AppCompatActivity {
                         String formattedStartTime = formatTimestamp(showStartTime);
                         String formattedEndTime = formatTimestamp(showEndTime);
 
-                        Booking booking = new Booking(bookingId, bookingStatus, movieName, theatreName, theatreLocation, hallName, formattedStartTime, formattedEndTime, selectedSeats, totalPrice);
+                        Booking booking = new Booking(bookingId, bookingStatus, movieName, theatreName, theatreLocation, hallName, showId, formattedStartTime, formattedEndTime, selectedSeats, totalPrice, seatList);
                         bookingList.add(booking);
                     }
 
@@ -131,6 +132,7 @@ public class CustomerSideViewBookings extends AppCompatActivity {
                         String theatreName = document.getString("theatreName");
                         String theatreLocation = document.getString("theatreLocation");
                         String hallName = document.getString("hallName");
+                        String showId = document.getString("showId");
                         Timestamp showStartTime = document.getTimestamp("showStartTime");
                         Timestamp showEndTime = document.getTimestamp("showEndTime");
                         List<String> seatList = (List<String>) document.get("selectedSeats");
@@ -141,7 +143,7 @@ public class CustomerSideViewBookings extends AppCompatActivity {
                         String formattedStartTime = formatTimestamp(showStartTime);
                         String formattedEndTime = formatTimestamp(showEndTime);
 
-                        Booking booking = new Booking(bookingId, bookingStatus, movieName, theatreName, theatreLocation, hallName, formattedStartTime, formattedEndTime, selectedSeats, totalPrice);
+                        Booking booking = new Booking(bookingId, bookingStatus, movieName, theatreName, theatreLocation, hallName, showId, formattedStartTime, formattedEndTime, selectedSeats, totalPrice, seatList);
                         bookingList.add(booking);
                     }
 

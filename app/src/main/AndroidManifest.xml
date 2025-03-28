@@ -16,6 +16,30 @@
         android:theme="@style/Theme.MajorProjectTicketBookingSystem"
         tools:targetApi="31">
         <activity
+            android:name=".EmployeeSideChooseUpcomingOrPastBookings"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideChooseBookingDetailsOrScanQR"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideSeatsSelectionForViewBookings"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideChooseShowForViewBookings"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideChooseMovieForViewBookings"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideChooseHallForViewBookings"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideQRCodeScanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QRGenerationActivity"
+            android:exported="false" />
+        <activity
             android:name=".CustomerSideViewBookings"
             android:exported="false" />
         <activity
@@ -96,6 +120,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CaptureAct"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme" />
     </application>
 
 </manifest>

@@ -59,6 +59,10 @@ public class HallAdapter extends RecyclerView.Adapter<HallAdapter.HallViewHolder
                 intent.putExtra("theatre",theatre);
             } else if ("employee".equalsIgnoreCase(caller)) {
                 intent = new Intent(context, EmployeeSideAddMovieToHallActivity.class);
+            } else if ("EmployeeViewUpcomingBookingsMovieWise".equalsIgnoreCase(caller) || "EmployeeViewPastBookingsMovieWise".equalsIgnoreCase(caller)) {
+                intent = new Intent(context, EmployeeSideChooseShowForViewBookings.class);
+                intent.putExtra("caller", caller);
+                intent.putExtra("theatre",theatre);
             } else {
                 intent = new Intent(context, CustomerSideChooseAvailableShowsActivity.class); // Fallback page
                 intent.putExtra("theatre",theatre);

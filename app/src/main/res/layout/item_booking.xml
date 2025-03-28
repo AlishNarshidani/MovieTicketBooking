@@ -95,6 +95,29 @@
                 android:paddingStart="6dp"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="6dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_theatre"
+                app:tint="@android:color/darker_gray"/>
+
+            <TextView
+                android:id="@+id/txtHallName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hall Name"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:paddingStart="6dp"/>
+        </LinearLayout>
+
         <!-- Show Timings -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,6 +214,40 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/holo_blue_dark"
                 android:paddingStart="4dp"/>
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:id="@+id/buttonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="12dp">
+
+            <!-- Generate QR Button -->
+            <Button
+                android:id="@+id/btnGenerateQR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generate QR"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:layout_marginEnd="8dp"/>
+
+            <!-- Cancel Booking Button -->
+            <Button
+                android:id="@+id/btnCancelBooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Cancel Booking"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@android:color/holo_red_dark"/>
         </LinearLayout>
 
     </LinearLayout>

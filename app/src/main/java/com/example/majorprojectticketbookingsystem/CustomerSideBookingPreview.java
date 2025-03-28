@@ -1,7 +1,9 @@
 package com.example.majorprojectticketbookingsystem;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -122,9 +125,30 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
             public void onClick(View v) {
                 if(movie != null && theatre != null && show != null && hall != null)
                 {
-                    btnPayDirect.setEnabled(false);
-                    progressBar.setVisibility(View.VISIBLE);
-                    checkWalletBalance();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(CustomerSideBookingPreview.this)
+                            .setTitle("Pay Through Wallet ?")
+                            .setIcon(R.drawable.baseline_account_balance_wallet_24)
+                            .setMessage("Are you Sure you want to pay through wallet ?")
+                            .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    btnPayDirect.setEnabled(false);
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    checkWalletBalance();
+
+                                }
+                            })
+                            .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                    alert.setCancelable(false);
+                    alert.show();
+
                 }
             }
         });
@@ -441,6 +465,9 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
         bookingDetails.put("theatreLocation", theatre.getLocation());
 
         bookingDetails.put("bookingStatus","Confirmed");
+        bookingDetails.put("bookingType","Online");
+        bookingDetails.put("totalBookedSeats", selectedSeatIds.size());
+        bookingDetails.put("admittedPersons", 0);
 
         // ✅ Hall details
         bookingDetails.put("hall_id", hall.getHallId());

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class CustomerSideChooseAvailableShowsActivity extends AppCompatActivity {
+public class EmployeeSideChooseShowForViewBookings extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
@@ -37,16 +37,20 @@ public class CustomerSideChooseAvailableShowsActivity extends AppCompatActivity 
 
     String theatreId, movieId, hallId;
 
+    String caller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_customer_side_choose_available_shows);
+        setContentView(R.layout.activity_employee_side_choose_show_for_view_bookings);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        caller = getIntent().getStringExtra("caller");
 
         showList = new ArrayList<>();
 
@@ -64,20 +68,21 @@ public class CustomerSideChooseAvailableShowsActivity extends AppCompatActivity 
             hallId = hall.getHallId();
             theatreId = theatre.getId();
 
+            
+            if(caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsMovieWise")) {
+                fetchUpcomingShowsFromFirestore();
+                
+            } else if (caller.equalsIgnoreCase("EmployeeViewPastBookingsMovieWise")) {
+                fetchPastShowsFromFirestore();
+            }
 
 
-
-
-            fetchShowsFromFirestore();
         }
-
-
 
     }
 
 
-
-    private void fetchShowsFromFirestore() {
+    private void fetchUpcomingShowsFromFirestore() {
         progressBar.setVisibility(View.VISIBLE);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -125,10 +130,58 @@ public class CustomerSideChooseAvailableShowsActivity extends AppCompatActivity 
     }
 
 
+private void fetchPastShowsFromFirestore() {
+        progressBar.setVisibility(View.VISIBLE);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Timestamp currentTimestamp = Timestamp.now();
+
+        db.collection("shows")
+                .whereEqualTo("hall_id", hallId)  // ✅ Filter by specific hall
+                .whereEqualTo("movieId", movieId) // ✅ Filter by specific movie
+                .whereLessThan("showStartTime", currentTimestamp) // ✅ Only upcoming shows
+                .orderBy("showStartTime", Query.Direction.ASCENDING) // ✅ Sort by start time
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    showList.clear();
+
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        String showId = document.getString("showId");
+                        String hall_id = document.getString("hall_id");
+                        String theatreId = document.getString("theatreId");
+                        String movieId = document.getString("movieId");
+                        String movieName = document.getString("movieName");
+                        Timestamp showStartTime = document.getTimestamp("showStartTime");
+                        Timestamp showEndTime = document.getTimestamp("showEndTime");
+
+                        String formattedStartTime = formatTimestamp(showStartTime);
+                        String formattedEndTime = formatTimestamp(showEndTime);
+
+                        Show show = new Show(showId, hall_id, theatreId, movieId, movieName, formattedStartTime, formattedEndTime);
+
+                        showList.add(show);
+                    }
+
+                    // ✅ If no upcoming shows
+                    if (showList.isEmpty()) {
+                        Toast.makeText(this, "No upcoming shows!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // ✅ Update RecyclerView with schedule
+                        updateScheduleUI(showList);
+                    }
+
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("Firestore", "Error fetching shows", e);
+                    Toast.makeText(this, "Error loading schedule!", Toast.LENGTH_SHORT).show();
+                });
+    }
+
+
     private void updateScheduleUI(List<Show> showList) {
         progressBar.setVisibility(View.GONE);
 
-        showAdapter = new ShowAdapter(showList, CustomerSideChooseAvailableShowsActivity.this, movie, hall, theatre, "customer");
+        showAdapter = new ShowAdapter(showList, EmployeeSideChooseShowForViewBookings.this, movie, hall, theatre, "EmployeeViewUpcomingBookings");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(showAdapter);
     }
@@ -140,7 +193,6 @@ public class CustomerSideChooseAvailableShowsActivity extends AppCompatActivity 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
         return sdf.format(timestamp.toDate()); // ✅ Convert Firestore Timestamp to formatted String
     }
-
 
 
 }

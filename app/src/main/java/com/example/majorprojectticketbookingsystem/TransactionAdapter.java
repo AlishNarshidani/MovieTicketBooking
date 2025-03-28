@@ -42,6 +42,9 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         } else if (transactionType.equalsIgnoreCase("Booking")) {
             holder.textTransactionId.setText("Booking ID: "+transaction.getTransactionIdOrBookingId());
             holder.textStatus.setText("Method: "+transaction.getTransactionStatusOrMethod());
+        } else if (transactionType.equalsIgnoreCase("Refund")) {
+            holder.textTransactionId.setText("Booking ID: "+transaction.getTransactionIdOrBookingId());
+            holder.textStatus.setText(transaction.getTransactionStatusOrMethod());
         }
 
         holder.textTransactionType.setText(transactionType);

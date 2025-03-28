@@ -18,13 +18,15 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ShowViewHolder
     private Movie movie;
     private Hall hall;
     private Theatre theatre;
+    private String caller;
 
-    public ShowAdapter(List<Show> showList, Context context, Movie movie, Hall hall, Theatre theatre) {
+    public ShowAdapter(List<Show> showList, Context context, Movie movie, Hall hall, Theatre theatre, String caller) {
         this.showList = showList;
         this.context = context;
         this.movie = movie;
         this.hall = hall;
         this.theatre = theatre;
+        this.caller = caller;
     }
 
     @NonNull
@@ -43,7 +45,18 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ShowViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, CustomerSideSeatsSelectionActivity.class);
+
+                Intent intent;
+
+                if(caller.equalsIgnoreCase("customer"))
+                {
+                    intent = new Intent(context, CustomerSideSeatsSelectionActivity.class);
+                } else if (caller.equalsIgnoreCase("EmployeeViewUpcomingBookings")) {
+                    intent = new Intent(context, EmployeeSideSeatsSelectionForViewBookings.class);
+                } else {
+                    intent = new Intent(context, CustomerSideSeatsSelectionActivity.class);
+                }
+
                 intent.putExtra("theatre",theatre);
                 intent.putExtra("show", show);
                 intent.putExtra("hall", hall);

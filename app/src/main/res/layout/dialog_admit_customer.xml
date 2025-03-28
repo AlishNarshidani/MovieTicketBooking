@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- Title TextView -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Number Of Persons"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Horizontal layout for EditText and increment/decrement buttons -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Decrement Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/decrementButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/decrement" />
+
+        <!-- Bet Amount EditText -->
+        <EditText
+            android:id="@+id/admitPersonEditText"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:inputType="number"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="22sp"
+            android:enabled="false"
+            android:focusable="false"
+            android:textColor="@color/white"
+            android:foregroundTint="@color/white"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/verified_background"/>
+
+        <!-- Increment Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/incrementButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/increment" />
+    </LinearLayout>
+
+    <!-- Horizontal layout for Cancel and Bet buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="16dp">
+
+        <!-- Cancel Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            app:cornerRadius="8dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/verified_background"/>
+
+        <!-- Bet Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirmButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Admit"
+            android:layout_marginLeft="8dp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:background="@drawable/gradient_background"/>
+    </LinearLayout>
+</LinearLayout>
