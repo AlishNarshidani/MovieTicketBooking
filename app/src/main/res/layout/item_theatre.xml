@@ -6,7 +6,8 @@
     android:layout_margin="8dp"
     android:elevation="4dp"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:id="@+id/theatreLayout"

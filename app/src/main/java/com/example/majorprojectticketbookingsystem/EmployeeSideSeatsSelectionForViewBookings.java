@@ -43,6 +43,9 @@ public class EmployeeSideSeatsSelectionForViewBookings extends AppCompatActivity
     Theatre theatre;
     Hall hall;
     Show show;
+    ShowDayWise showDayWise;
+
+    String caller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,20 +66,27 @@ public class EmployeeSideSeatsSelectionForViewBookings extends AppCompatActivity
 
         db = FirebaseFirestore.getInstance();
 
+        caller = getIntent().getStringExtra("caller");
         movie = (Movie) getIntent().getSerializableExtra("movie");
         theatre = (Theatre) getIntent().getSerializableExtra("theatre");
         hall = (Hall) getIntent().getSerializableExtra("hall");
-        show = (Show) getIntent().getSerializableExtra("show");
 
-
-        if(show != null) {
+        if(caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsDayWise") || caller.equalsIgnoreCase("EmployeeViewPastBookingsDayWise")) {
+            showDayWise = (ShowDayWise) getIntent().getSerializableExtra("showDayWise");
+            showId = showDayWise.getShowId();
+        } else if (caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsMovieWise") || caller.equalsIgnoreCase("EmployeeViewPastBookingsMovieWise")) {
+            show = (Show) getIntent().getSerializableExtra("show");
             showId = show.getShowId();
-            theatreId = theatre.getId();
-            movieId = movie.getId();
-            hallId = hall.getHallId();
-
-            fetchSeatsFromFirestore();
         }
+
+
+
+        theatreId = theatre.getId();
+        movieId = movie.getId();
+        hallId = hall.getHallId();
+
+        fetchSeatsFromFirestore();
+
 
 
         btnPhysicalBook.setOnClickListener(new View.OnClickListener() {
@@ -96,14 +106,30 @@ public class EmployeeSideSeatsSelectionForViewBookings extends AppCompatActivity
                     selectedSeatPrices.add(seatPrice);
                 }
 
-                Intent intent = new Intent(EmployeeSideSeatsSelectionForViewBookings.this, CustomerSideBookingPreview.class);
+                Intent intent = new Intent(EmployeeSideSeatsSelectionForViewBookings.this, EmployeeSidePhysicalBookingPreview.class);
                 intent.putExtra("movie",movie);
                 intent.putExtra("hall",hall);
                 intent.putExtra("theatre",theatre);
-                intent.putExtra("show",show);
+
+                if(caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsDayWise")) {
+                    intent.putExtra("showDayWise",showDayWise);
+                } else if (caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsMovieWise")) {
+                    intent.putExtra("show",show);
+                }
+
+                intent.putExtra("caller",caller);
                 intent.putExtra("totalPrice",String.valueOf(totalPrice));
                 intent.putStringArrayListExtra("selectedSeatIds", selectedSeatIds);
                 intent.putIntegerArrayListExtra("selectedSeatPrices", selectedSeatPrices);
+                startActivity(intent);
+            }
+        });
+
+        btnViewBookingDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmployeeSideSeatsSelectionForViewBookings.this, EmployeeSideViewBookedSeatsDetails.class);
+                intent.putExtra("showId",showId);
                 startActivity(intent);
             }
         });
@@ -227,7 +253,9 @@ public class EmployeeSideSeatsSelectionForViewBookings extends AppCompatActivity
         totalPriceText.setText("Total: ₹" + totalPrice);
 
         // Show confirm button only if seats are selected
-        btnPhysicalBook.setVisibility(selectedSeats.isEmpty() ? View.GONE : View.VISIBLE);
+        if(caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsMovieWise") || caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsDayWise")) {
+            btnPhysicalBook.setVisibility(selectedSeats.isEmpty() ? View.GONE : View.VISIBLE);
+        }
     }
 
 

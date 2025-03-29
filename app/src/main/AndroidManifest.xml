@@ -16,6 +16,15 @@
         android:theme="@style/Theme.MajorProjectTicketBookingSystem"
         tools:targetApi="31">
         <activity
+            android:name=".EmployeeSidePhysicalBookingPreview"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideViewBookedSeatsDetails"
+            android:exported="false" />
+        <activity
+            android:name=".EmployeeSideChooseShowForViewBookingsDayWise"
+            android:exported="false" />
+        <activity
             android:name=".EmployeeSideChooseUpcomingOrPastBookings"
             android:exported="false" />
         <activity

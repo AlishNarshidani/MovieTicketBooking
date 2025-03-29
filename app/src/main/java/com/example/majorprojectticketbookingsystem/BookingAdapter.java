@@ -73,6 +73,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
         if(bookingStatus != null && !bookingStatus.isEmpty()) {
             holder.txtBookingStatus.setText("Booking: "+bookingStatus);
             if (bookingStatus.equalsIgnoreCase("confirmed")) {
+                holder.btnGenerateQR.setVisibility(View.VISIBLE);
                 holder.txtBookingStatus.setTextColor(ContextCompat.getColor(context, R.color.mid_green));
 
 
@@ -83,6 +84,7 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.BookingV
             } else if (bookingStatus.equalsIgnoreCase("cancelled")) {
                 holder.txtBookingStatus.setTextColor(Color.RED);
                 holder.btnGenerateQR.setVisibility(View.GONE);
+                holder.btnCancelBooking.setVisibility(View.GONE);
             }
 
         } else {

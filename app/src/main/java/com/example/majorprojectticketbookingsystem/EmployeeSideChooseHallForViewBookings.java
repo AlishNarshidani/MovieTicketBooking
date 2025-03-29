@@ -105,7 +105,7 @@ public class EmployeeSideChooseHallForViewBookings extends AppCompatActivity {
         db.collection("shows")
                 .whereEqualTo("theatreId", theatreId)  // ✅ Filter by theatre
                 .whereEqualTo("movieId", movieId)      // ✅ Filter by movie
-                .whereGreaterThan("showStartTime", currentTimestamp) // ✅ Only fetch upcoming shows
+                .whereGreaterThan("showEndTime", currentTimestamp) // ✅ Only fetch upcoming shows
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     Set<String> uniqueHallIds = new HashSet<>();
@@ -140,7 +140,7 @@ public class EmployeeSideChooseHallForViewBookings extends AppCompatActivity {
         db.collection("shows")
                 .whereEqualTo("theatreId", theatreId)  // ✅ Filter by theatre
                 .whereEqualTo("movieId", movieId)      // ✅ Filter by movie
-                .whereLessThan("showStartTime", currentTimestamp) // ✅ Only fetch past shows
+                .whereLessThan("showEndTime", currentTimestamp) // ✅ Only fetch past shows
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     Set<String> uniqueHallIds = new HashSet<>();

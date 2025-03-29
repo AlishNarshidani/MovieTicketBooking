@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmployeeSidePhysicalBookingPreview">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Booking Preview"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:padding="10dp"/>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnConfirmBooking"
+        android:layout_below="@+id/title"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_above="@+id/btnPayDirect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <!-- Movie Name -->
+            <TextView
+                android:id="@+id/txtMovieName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Movie Name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingBottom="6dp"/>
+
+            <!-- Theatre Name -->
+            <TextView
+                android:id="@+id/txtTheatreName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Theatre Name"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/txtTheatreAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Theatre Address"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="6dp"/>
+
+            <!-- Hall Name -->
+            <TextView
+                android:id="@+id/txtHallName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hall Name"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="6dp"/>
+
+            <!-- Show Time -->
+            <TextView
+                android:id="@+id/txtShowTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Timing"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="6dp"/>
+
+            <!-- Selected Seats -->
+            <TextView
+                android:id="@+id/txtSelectedSeats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selected Seats"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:paddingBottom="6dp"/>
+
+            <!-- Total Price -->
+            <TextView
+                android:id="@+id/txtTotalPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total Price"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Confirm Button -->
+    <Button
+        android:id="@+id/btnConfirmBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Confirm Booking"
+        android:textSize="18sp"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

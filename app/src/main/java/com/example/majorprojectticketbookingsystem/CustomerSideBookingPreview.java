@@ -297,6 +297,7 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
                         if (((Number) seat.get("id")).intValue() == seatId) {
                             seat.put("isBooked", true);
                             seat.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid()); // ✅ Assign user ID
+                            seat.put("bookingType","Online");
                             break;
                         }
                     }
@@ -776,6 +777,7 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
                         if (currentSeatId == seatId) {
                             seat.put("isBooked", false);
                             seat.remove("userId"); // Remove user association
+                            seat.remove("bookingType");
                             break;
                         }
                     }

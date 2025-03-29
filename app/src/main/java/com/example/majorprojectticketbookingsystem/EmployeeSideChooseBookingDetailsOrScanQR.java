@@ -42,9 +42,9 @@ public class EmployeeSideChooseBookingDetailsOrScanQR extends AppCompatActivity 
         viewBookingsDayWiseCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(EmployeeSideChooseBookingDetailsOrScanQR.this, EmployeeSideChooseMovieForViewBookings.class);
-//                intent.putExtra("caller", "dayWise");
-//                startActivity(intent);
+                Intent intent = new Intent(EmployeeSideChooseBookingDetailsOrScanQR.this, EmployeeSideChooseUpcomingOrPastBookings.class);
+                intent.putExtra("caller", "dayWise");
+                startActivity(intent);
             }
         });
 

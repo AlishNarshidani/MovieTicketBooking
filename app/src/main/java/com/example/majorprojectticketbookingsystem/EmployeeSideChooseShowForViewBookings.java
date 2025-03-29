@@ -91,7 +91,7 @@ public class EmployeeSideChooseShowForViewBookings extends AppCompatActivity {
         db.collection("shows")
                 .whereEqualTo("hall_id", hallId)  // ✅ Filter by specific hall
                 .whereEqualTo("movieId", movieId) // ✅ Filter by specific movie
-                .whereGreaterThan("showStartTime", currentTimestamp) // ✅ Only upcoming shows
+                .whereGreaterThan("showEndTime", currentTimestamp) // ✅ Only upcoming shows
                 .orderBy("showStartTime", Query.Direction.ASCENDING) // ✅ Sort by start time
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -130,7 +130,7 @@ public class EmployeeSideChooseShowForViewBookings extends AppCompatActivity {
     }
 
 
-private void fetchPastShowsFromFirestore() {
+    private void fetchPastShowsFromFirestore() {
         progressBar.setVisibility(View.VISIBLE);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -139,7 +139,7 @@ private void fetchPastShowsFromFirestore() {
         db.collection("shows")
                 .whereEqualTo("hall_id", hallId)  // ✅ Filter by specific hall
                 .whereEqualTo("movieId", movieId) // ✅ Filter by specific movie
-                .whereLessThan("showStartTime", currentTimestamp) // ✅ Only upcoming shows
+                .whereLessThan("showEndTime", currentTimestamp) // ✅ Only upcoming shows
                 .orderBy("showStartTime", Query.Direction.ASCENDING) // ✅ Sort by start time
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -181,7 +181,7 @@ private void fetchPastShowsFromFirestore() {
     private void updateScheduleUI(List<Show> showList) {
         progressBar.setVisibility(View.GONE);
 
-        showAdapter = new ShowAdapter(showList, EmployeeSideChooseShowForViewBookings.this, movie, hall, theatre, "EmployeeViewUpcomingBookings");
+        showAdapter = new ShowAdapter(showList, EmployeeSideChooseShowForViewBookings.this, movie, hall, theatre, caller);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(showAdapter);
     }

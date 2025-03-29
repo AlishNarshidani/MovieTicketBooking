@@ -41,7 +41,7 @@ public class EmployeeSideChooseUpcomingOrPastBookings extends AppCompatActivity 
                 if(caller.equalsIgnoreCase("movieWise")) {
                     intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseMovieForViewBookings.class);
                 } else if (caller.equalsIgnoreCase("dayWise")) {
-                    intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseMovieForViewBookings.class);
+                    intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseShowForViewBookingsDayWise.class);
                 } else {
                     intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseMovieForViewBookings.class);
                 }
@@ -58,7 +58,7 @@ public class EmployeeSideChooseUpcomingOrPastBookings extends AppCompatActivity 
                 if(caller.equalsIgnoreCase("movieWise")) {
                     intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseMovieForViewBookings.class);
                 } else if (caller.equalsIgnoreCase("dayWise")) {
-                    intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseMovieForViewBookings.class);
+                    intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseShowForViewBookingsDayWise.class);
                 } else {
                     intent = new Intent(EmployeeSideChooseUpcomingOrPastBookings.this, EmployeeSideChooseMovieForViewBookings.class);
                 }

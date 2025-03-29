@@ -30,7 +30,10 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="8dp"
-                android:layout_margin="12dp">
+                android:layout_margin="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -100,7 +103,10 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="8dp"
-                android:layout_margin="12dp">
+                android:layout_margin="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -142,12 +148,12 @@
 
                         <ImageView
                             android:id="@+id/icon3"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_alignParentEnd="true"
                             android:scaleX="1.2"
                             android:scaleY="1.2"
-                            android:src="@drawable/cinemalogo"
+                            android:src="@drawable/bookingshistory"
                             android:contentDescription="Essentials" />
 
                     </RelativeLayout>
@@ -170,7 +176,10 @@
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="8dp"
-                android:layout_margin="12dp">
+                android:layout_margin="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -212,12 +221,12 @@
 
                         <ImageView
                             android:id="@+id/icon4"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_alignParentEnd="true"
                             android:scaleX="1.2"
                             android:scaleY="1.2"
-                            android:src="@drawable/cinemalogo"
+                            android:src="@drawable/baseline_qr_code_scanner_24"
                             android:contentDescription="Essentials" />
 
                     </RelativeLayout>

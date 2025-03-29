@@ -51,8 +51,12 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ShowViewHolder
                 if(caller.equalsIgnoreCase("customer"))
                 {
                     intent = new Intent(context, CustomerSideSeatsSelectionActivity.class);
-                } else if (caller.equalsIgnoreCase("EmployeeViewUpcomingBookings")) {
+                } else if (caller.equalsIgnoreCase("EmployeeViewUpcomingBookingsMovieWise")) {
                     intent = new Intent(context, EmployeeSideSeatsSelectionForViewBookings.class);
+                    intent.putExtra("caller",caller);
+                } else if (caller.equalsIgnoreCase("EmployeeViewPastBookingsMovieWise")) {
+                    intent = new Intent(context, EmployeeSideViewBookedSeatsDetails.class);
+                    intent.putExtra("showId",show.getShowId());
                 } else {
                     intent = new Intent(context, CustomerSideSeatsSelectionActivity.class);
                 }

@@ -181,7 +181,7 @@ public class EmployeeSideChooseMovieForViewBookings extends AppCompatActivity {
 
         db.collection("shows")
                 .whereEqualTo("theatreId", theatreId)  // ✅ Filter by theatre
-                .whereLessThan("showStartTime", currentTimestamp)  // ✅ Only fetch past shows
+                .whereLessThan("showEndTime", currentTimestamp)  // ✅ Only fetch past shows
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if(!queryDocumentSnapshots.isEmpty()) {

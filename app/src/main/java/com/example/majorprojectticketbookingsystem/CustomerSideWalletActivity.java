@@ -121,9 +121,9 @@ public class CustomerSideWalletActivity extends AppCompatActivity {
                                     depositedMoney.setText("₹0");
                                 }
 
-                                if(fetchedDiscountPerc!=null)
+                                if(fetchedDiscountPerc!=null && fetchedDiscountPerc.intValue() != 0)
                                 {
-                                    discountPerc.setVisibility(View.VISIBLE);
+                                    discountCardView.setVisibility(View.VISIBLE);
                                     discountPerc.setText(fetchedDiscountPerc.toString() + "%");
                                 }
 
