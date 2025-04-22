@@ -61,6 +61,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
             if (user != null) {
                 loadingIndicator.setVisibility(View.VISIBLE);
                 updateUserRoleAndTheatreId(user.getUid()); // Call the function before redirecting
+
+                SharedPreferences sharedPreferencesFCM = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                String token = sharedPreferencesFCM.getString("fcmToken", null);
+                if (token != null) {
+                    // Save token to Firestore
+                    saveTokenToFirestore(user.getUid(), token);
+                }
+
             }
 //            if(sharedPreferences.getString("userRole", "").equalsIgnoreCase("employee")) {
 //                Intent i = new Intent(getApplicationContext(), EmployeeDashboard.class);
@@ -114,6 +122,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
                                     Log.d("userId", userId);
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+                                    SharedPreferences sharedPreferencesFCM = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                                    String token = sharedPreferencesFCM.getString("fcmToken", null);
+                                    if (token != null) {
+                                        // Save token to Firestore
+                                        saveTokenToFirestore(user.getUid(), token);
+                                    }
+
                                     db.collection("users").document(userId).get().addOnSuccessListener(documentSnapshot -> {
 
                                         if (documentSnapshot.exists()) {
@@ -163,6 +178,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
         }
     }
 
+        private void saveTokenToFirestore(String uid, String token) {
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(uid)
+                    .update("fcmToken", token)
+                    .addOnSuccessListener(unused -> Log.d("FCM", "Token saved"))
+                    .addOnFailureListener(e -> Log.e("FCM", "Failed to save token", e));
+        }
+
 
         private void updateUserRoleAndTheatreId(String userId)
         {
@@ -172,6 +196,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
                 if (documentSnapshot.exists()) {
                     String userRole = documentSnapshot.getString("userRole");
                     String theatreId = documentSnapshot.getString("theatreId");
+                    Long discountPercLong = documentSnapshot.getLong("discountPerc");
+                    int discountPerc = discountPercLong != null ? discountPercLong.intValue() : 0;
 
                     // Update Shared Preferences
                     SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
@@ -179,6 +205,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
                     editor.putString("userRole", userRole);
                     editor.putString("theatreId", theatreId);
                     editor.putBoolean("isLoggedIn", true);
+                    editor.putInt("discountPerc", discountPerc);
                     editor.apply();
 
                     Log.d("Updated Prefs", "Role: " + userRole + ", TheatreId: " + theatreId);

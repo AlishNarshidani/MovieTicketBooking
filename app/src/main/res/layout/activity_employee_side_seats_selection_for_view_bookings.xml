@@ -153,13 +153,24 @@
         android:id="@+id/btnPhysicalBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnViewBookingDetails"
+        android:layout_above="@+id/cancelShow"
         android:text="Block Seats"
         android:textSize="18sp"
         android:visibility="gone"
         android:backgroundTint="@android:color/black"
         android:textColor="@android:color/white"
         android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/cancelShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnViewBookingDetails"
+        android:text="Cancel Show"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnViewBookingDetails"

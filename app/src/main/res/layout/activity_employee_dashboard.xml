@@ -140,76 +140,76 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/addFoodAvailable"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
-                android:layout_margin="12dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground">
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/addFoodAvailable"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="150dp"-->
+<!--                android:layout_marginBottom="12dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                android:layout_margin="12dp"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                android:foreground="?attr/selectableItemBackground">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="vertical">-->
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp"
-                        android:background="@drawable/bg_green_gradient">
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:background="@drawable/bg_green_gradient">-->
 
-                        <TextView
-                            android:id="@+id/title2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add Food Available"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/title2"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Add Food Available"-->
+<!--                            android:textColor="@android:color/white"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:textStyle="bold" />-->
 
-                        <TextView
-                            android:id="@+id/subtitle2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add Food &amp; Drinks Available"
-                            android:textColor="@android:color/white"
-                            android:textSize="14sp"
-                            android:layout_below="@id/title2"
-                            android:layout_marginTop="4dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/subtitle2"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Add Food &amp; Drinks Available"-->
+<!--                            android:textColor="@android:color/white"-->
+<!--                            android:textSize="14sp"-->
+<!--                            android:layout_below="@id/title2"-->
+<!--                            android:layout_marginTop="4dp" />-->
 
-                        <ImageView
-                            android:id="@+id/greaterThanSymbol2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="-10dp"
-                            android:layout_below="@id/subtitle2"
-                            android:src="@drawable/ic_greater_than"/>
+<!--                        <ImageView-->
+<!--                            android:id="@+id/greaterThanSymbol2"-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginStart="-10dp"-->
+<!--                            android:layout_below="@id/subtitle2"-->
+<!--                            android:src="@drawable/ic_greater_than"/>-->
 
-                        <ImageView
-                            android:id="@+id/icon2"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_alignParentEnd="true"
-                            android:src="@drawable/foodandbeverages"
-                            android:contentDescription="Essentials" />
+<!--                        <ImageView-->
+<!--                            android:id="@+id/icon2"-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_alignParentEnd="true"-->
+<!--                            android:src="@drawable/foodandbeverages"-->
+<!--                            android:contentDescription="Essentials" />-->
 
-                    </RelativeLayout>
+<!--                    </RelativeLayout>-->
 
-                    <!-- Gradient Overlay for Text Visibility -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
-                        android:background="@drawable/gradient_overlay"/>
+<!--                    &lt;!&ndash; Gradient Overlay for Text Visibility &ndash;&gt;-->
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:layout_alignParentBottom="true"-->
+<!--                        android:background="@drawable/gradient_overlay"/>-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
-            </androidx.cardview.widget.CardView>
+<!--            </androidx.cardview.widget.CardView>-->
 
 
 

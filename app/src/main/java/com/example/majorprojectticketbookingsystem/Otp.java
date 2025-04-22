@@ -65,6 +65,7 @@ public class Otp extends AppCompatActivity {
                             userData.put("mno", mno);
                             userData.put("dob", dob);
                             userData.put("userRole","customer");
+                            userData.put("discountPerc",0);
 
                             db.collection("users").document(userId).set(userData)
                                     .addOnSuccessListener(aVoid -> {

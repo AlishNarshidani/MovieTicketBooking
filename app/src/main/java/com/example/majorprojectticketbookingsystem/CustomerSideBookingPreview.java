@@ -1,6 +1,9 @@
 package com.example.majorprojectticketbookingsystem;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,7 +51,7 @@ import java.util.Map;
 public class CustomerSideBookingPreview extends AppCompatActivity implements PaymentResultListener {
 
     private String totalPrice;
-    private TextView txtMovieName, txtTheatreName, txtHallName, txtShowTime, txtTotalPrice, txtSelectedSeats, txtTheatreAddress;
+    private TextView txtMovieName, txtTheatreName, txtHallName, txtShowTime, txtTotalPrice, txtSelectedSeats, txtTheatreAddress, txtDiscountPerc, txtPayablePrice;
 
     Movie movie;
     Theatre theatre;
@@ -90,6 +93,8 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
         txtShowTime = findViewById(R.id.txtShowTime);
         txtTotalPrice = findViewById(R.id.txtTotalPrice);
         txtSelectedSeats = findViewById(R.id.txtSelectedSeats);
+        txtDiscountPerc = findViewById(R.id.txtDiscountPerc);
+        txtPayablePrice = findViewById(R.id.txtPayablePrice);
         btnPayDirect = findViewById(R.id.btnPayDirect);
         btnPayWithWallet = findViewById(R.id.btnPayWithWallet);
         progressBar = findViewById(R.id.progressBar);
@@ -206,6 +211,18 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
         }
 
         txtSelectedSeats.setText(seatInfo.toString().trim());
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        int discountPerc = sharedPreferences.getInt("discountPerc", 0);
+
+        if(discountPerc != 0) {
+            txtDiscountPerc.setVisibility(View.VISIBLE);
+            txtPayablePrice.setVisibility(View.VISIBLE);
+            txtDiscountPerc.setText("Discount: " + discountPerc + "%");
+            int discountedPrice = (int) (Double.parseDouble(totalPrice) - (Double.parseDouble(totalPrice) * discountPerc / 100));
+            txtPayablePrice.setText("To Pay: ₹" + discountedPrice);
+            totalPrice = String.valueOf(discountedPrice);
+        }
     }
 
 
@@ -549,6 +566,18 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
 
     public void showToastForBookingConfirmed()
     {
+        resetDiscount();
+
+        String showStartTimeString = show.getShowStartTime();
+        Timestamp timestamp = convertToTimestamp(showStartTimeString);
+
+        if (timestamp != null) {
+            long showStartTimeMillis = timestamp.toDate().getTime(); // Convert to millis
+
+            // Schedule notification 1 hour before
+            scheduleNotification(CustomerSideBookingPreview.this, showStartTimeMillis);
+        }
+
         progressBar.setVisibility(View.GONE);
         btnPayDirect.setEnabled(true);
 
@@ -575,6 +604,52 @@ public class CustomerSideBookingPreview extends AppCompatActivity implements Pay
         startActivity(intent);
         finish();
     }
+
+
+    public void scheduleNotification(Context context, long showStartTimeInMillis) {
+        // 1 hour before the show
+        long triggerTime = showStartTimeInMillis - (60 * 60 * 1000);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault());
+        String formattedTriggerTime = sdf.format(new Date(triggerTime));
+        Log.d("NotificationDebug", "Notification scheduled for: " + formattedTriggerTime);
+
+        // Create an Intent for the BroadcastReceiver
+        Intent intent = new Intent(context, NotificationReceiver.class);
+        intent.putExtra("showTime", showStartTimeInMillis);
+        intent.putExtra("message","you have booking of movie " + movie.getTitle() + " at theatre " + theatre.getName() + " on " + show.getShowStartTime());
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+
+        // Set up the AlarmManager
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
+        }
+    }
+
+
+    private void resetDiscount() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user=auth.getCurrentUser();
+        String userId=user.getUid();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Update Firestore
+        db.collection("users").document(userId)
+                .update("discountPerc", 0)
+                .addOnSuccessListener(aVoid -> {
+                    // Update SharedPreferences
+                    editor.putInt("discountPerc", 0);
+                    editor.apply();
+                    Log.d("Firestore", "Discount reset successfully!");
+                })
+                .addOnFailureListener(e -> Log.e("Firestore", "Error resetting discount", e));
+    }
+
 
     public void showToastForBookingFailure()
     {

@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
     implementation(libs.play.services.location)
+    implementation(libs.firebase.messaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -50,6 +51,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.razorpay:checkout:1.6.38")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("androidx.core:core-ktx:1.9.0")
 }
 
 configurations.all {

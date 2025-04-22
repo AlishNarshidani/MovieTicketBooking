@@ -116,6 +116,30 @@
             android:textColor="@android:color/holo_red_dark"
             android:paddingBottom="10dp"/>
 
+        <!-- Discount  -->
+        <TextView
+            android:id="@+id/txtDiscountPerc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Discount Percentage"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_red_dark"
+            android:paddingBottom="10dp"/>
+
+        <!-- Discount  -->
+        <TextView
+            android:id="@+id/txtPayablePrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To Pay"
+            android:visibility="gone"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_red_dark"
+            android:paddingBottom="10dp"/>
+
     </LinearLayout>
 
     </ScrollView>

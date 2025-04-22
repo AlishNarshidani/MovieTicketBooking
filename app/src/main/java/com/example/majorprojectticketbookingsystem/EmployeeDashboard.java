@@ -30,7 +30,7 @@ public class EmployeeDashboard extends AppCompatActivity {
 
         profileIcon = findViewById(R.id.profileIcon);
         addMovieToTheatreCard = findViewById(R.id.addMovieToTheatreCard);
-        addFoodAvailable = findViewById(R.id.addFoodAvailable);
+//        addFoodAvailable = findViewById(R.id.addFoodAvailable);
         viewAllBookingsCard = findViewById(R.id.viewAllBookingsCard);
 
 
