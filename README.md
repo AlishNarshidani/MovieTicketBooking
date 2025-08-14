@@ -98,12 +98,14 @@ Whether you’re a **moviegoer** looking for an easy way to reserve your favorit
 ## 🖼️ Screenshots
 | Feature | Preview |
 |---------|---------|
-| Login & Sign-Up | ![Login](screenshots/login.png) |
-| Booking Flow | ![Booking](screenshots/booking.png) |
-| Payment | ![Payment](screenshots/payment.png) |
-| Booking History | ![History](screenshots/history.png) |
-| Employee Panel | ![Employee](screenshots/employee.png) |
-| Movie News | ![News](screenshots/news.png) |
+| **Sign Up & Login Screen** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" /> |
+| **Customer & Employee Dashboard** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
+| **Customer Booking Flow** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
+| **Customer Wallet Screen** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
+| **Customer Booking Details** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
+| **Employee - Add Movie Shows Flow** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
+| **Employee - View Bookings & Scan Ticket** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
+| **Movie News** | <img src="https://github.com/AlishNarshidani/Project_images/blob/main/fantasy_live_match_1.png?raw=true" width="200" />  |
 
 ---
 
